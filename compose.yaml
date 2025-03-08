@@ -3,6 +3,7 @@ x-airflow-common:
   image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.5.1}
   environment:
     &airflow-common-env
+    AIRFLOW_UID: 1000
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
@@ -11,7 +12,7 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
   volumes:
-    - ./dag:/opt/airflow/dags
+    - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
   user: "5000"
@@ -28,7 +29,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: admin
+      POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
     volumes:
@@ -56,7 +57,7 @@ services:
     ports:
       - 8080:8080
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:xxxx/health"]
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 10s
       timeout: 10s
       retries: 5
