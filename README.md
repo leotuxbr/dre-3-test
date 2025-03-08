@@ -17,8 +17,19 @@ Este projeto utiliza Docker Compose para iniciar e configurar um ambiente comple
 ## Como Usar
 
 1. **Pré-requisitos**: Certifique-se de ter o Docker e o Docker Compose instalados.
-2. **Instalação**: Clone este repositório e execute `docker-compose up` para iniciar os serviços.
-3. **Acesso**: Acesse a interface do Airflow em `http://localhost:8080` com as credenciais padrão.
+2. **Instalação**: Clone este repositório
+3. **Configurando o usuário correto do Airflow**: 
+   No Linux, o início rápido precisa saber o ID do usuário do host e precisa ter o ID do grupo definido como 0. Caso contrário, os arquivos criados em `dags`, `logs` e `plugins` serão criados com a propriedade do usuário `root`. Você precisa certificar-se de configurá-los para o `docker-compose`:
+   ```bash
+   mkdir -p ./dags ./logs ./plugins ./config
+   echo -e "AIRFLOW_UID=$(id -u)" > .env
+   ```
+4. **executando o docker-compose**:
+   ```bash
+   docker-compose up
+   ```
+5. **Acesso**: Acesse a interface do Airflow em `http://localhost:8080` com as credenciais padrão configuradas no docker-compose.
+
 
 ## Diagrama dos Componentes do Airflow
 
