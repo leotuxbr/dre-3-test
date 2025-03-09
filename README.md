@@ -18,7 +18,7 @@ Este projeto utiliza Docker Compose para iniciar e configurar um ambiente comple
 ## Demonstração
 
 <video width="640" height="480" controls>
-  <source src="https://drive.google.com/uc?export=download&id=1hmrExxhGX0gOBQnJLaVFF2pi4UqTkATu" type="video/webm">
+  <source src="https://drive.google.com/file/d/1hmrExxhGX0gOBQnJLaVFF2pi4UqTkATu/view" type="video/webm">
   Seu navegador não suporta o elemento de vídeo.
 </video>
 
