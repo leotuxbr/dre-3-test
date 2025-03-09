@@ -14,6 +14,14 @@ Este projeto utiliza Docker Compose para iniciar e configurar um ambiente comple
 - **Airflow CLI**: Interface de linha de comando do Airflow para depuração.
 - **Flower**: Interface web para monitorar o Celery.
 
+
+## Demonstração
+
+<video width="640" height="480" controls>
+  <source src="/images/airflow-demo.webm" type="video/webm">
+  Seu navegador não suporta o elemento de vídeo.
+</video>
+
 ## Como Usar
 
 1. **Pré-requisitos**: Certifique-se de ter o Docker e o Docker Compose instalados.
